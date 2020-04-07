@@ -1,0 +1,24 @@
+﻿  NVchinh.cpp
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Hamchung.h(44,2): warning C4091: 'typedef ': ignored on left of 'map' when no variable is declared
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Hamchung.h(53,2): warning C4091: 'typedef ': ignored on left of 'input' when no variable is declared
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(102,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(103,19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(180,46): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(185,69): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(201,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(271,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(280,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(303,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(304,39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(306,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(307,32): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(315,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(327,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(337,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(338,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(340,23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(341,40): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(349,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(359,22): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\NVchinh.cpp(373,38): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  game sinh ton.vcxproj -> C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\Debug\game sinh ton.exe
