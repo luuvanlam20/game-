@@ -23,6 +23,7 @@ NVchinh::NVchinh()
 	map_x_ = 0;
 	map_y_ = 0;
 	time_back = 0;
+	money = 0;
 }
 NVchinh::~NVchinh()
 {
@@ -310,27 +311,51 @@ void NVchinh::vacham(map& map_data)
 	{
 		if (x_val > 0)//di chuyen sang ngang
 		{
-			if (map_data.tile[y1][x2] != chotrong || map_data.tile[y2][x2] != chotrong)
+			int val1 = map_data.tile[y1][x2];
+			int val2 = map_data.tile[y2][x2];
+
+			if (val1 == tien || val2 == tien)
 			{
-				x_pos = x2 * TILE_SIZE;
-				x_pos -= (width_pic + 1);
-				x_val = 0;
+				map_data.tile[y1][x2] = 0;
+				map_data.tile[y2][x2] = 0;
+				ThemTien();
 			}
-			else if (map_data.tile[y1][x2] == chotrong && map_data.tile[y2+1][x2] == chotrong&& map_data.tile[y1][x2] == chotrong && map_data.tile[y2][x2] == chotrong)
-				on_groud = false;
-			
-		}
-		else if (x_val < 0)
+			else
 			{
-				if (map_data.tile[y1][x1] != chotrong || map_data.tile[y2][x1] != chotrong)
+				if (val1 != chotrong || val2 != chotrong)
 				{
-					x_pos = (x1+1) * TILE_SIZE;
+					x_pos = x2 * TILE_SIZE;
+					x_pos -= (width_pic + 1);
+					x_val = 0;
+				}
+				else if (map_data.tile[y1+1][x2] == chotrong && map_data.tile[y2 + 1][x2] == chotrong)
+					on_groud = false;
+			}
+		}
+		
+		else if (x_val < 0)
+		{
+			int val1 = map_data.tile[y1][x1];
+			int val2 = map_data.tile[y2][x1];
+			if (val1 == tien || val2 == tien)
+			{
+				map_data.tile[y1][x1] = 0;
+				map_data.tile[y2][x1] = 0;
+				ThemTien();
+			}
+			else
+			{
+				if (val1 != chotrong || val2 != chotrong)
+				{
+					x_pos = (x1 + 1) * TILE_SIZE;
 					//x_pos += width_pic ;
 					x_val = 0;
 				}
-				else if (map_data.tile[y1+1][x1] == chotrong && map_data.tile[y2+1][x1] == chotrong&& map_data.tile[y1][x1] == chotrong && map_data.tile[y2][x1] == chotrong)
+				else if (map_data.tile[y1 + 1][x1] == chotrong && map_data.tile[y2 + 1][x1] == chotrong)
 					on_groud = false;
 			}
+			
+		}
 	}
 	int width_min = width_pic < TILE_SIZE ? width_pic : TILE_SIZE;
 
@@ -344,22 +369,45 @@ void NVchinh::vacham(map& map_data)
 	{
 		if (y_val > 0)
 		{
-			if (map_data.tile[y2][x1] != chotrong || map_data.tile[y2][x2] != chotrong)
-			{
-				y_pos = y2 * TILE_SIZE;
-				y_pos -= height_pic + 1;
-				y_val = 0;
-				on_groud = true;
+			int val1 = map_data.tile[y2][x1];
+			int val2 = map_data.tile[y2][x2];
+			if (val1 == tien || val2 == tien) {
+				map_data.tile[y2][x1] = 0;
+				map_data.tile[y2][x2] = 0;
+				ThemTien();
 			}
+			else
+			{
+				if (val1 != chotrong || val2 != chotrong)
+				{
+					y_pos = y2 * TILE_SIZE;
+					y_pos -= height_pic + 1;
+					y_val = 0;
+					on_groud = true;
+				}
+			}
+			
 		}
 		else if (y_val < 0)
 		{
-			if (map_data.tile[y1][x1] != chotrong || map_data.tile[y1][x2] != chotrong)
+			int val1 = map_data.tile[y1][x1];
+			int val2 = map_data.tile[y1][x2];
+			if (val1 == tien || val2 == tien)
 			{
-				y_pos = (y1 + 1) * TILE_SIZE;
-				//x_pos += width_pic ;
-				y_val = 0;
+				map_data.tile[y1][x1] = 0;
+				map_data.tile[y1][x2] = 0;
+				ThemTien();
 			}
+			else
+			{
+				if (val1 != chotrong || val2 != chotrong)
+				{
+					y_pos = (y1 + 1) * TILE_SIZE;
+					//x_pos += width_pic ;
+					y_val = 0;
+				}
+			}
+			
 		}
 	}
 	x_pos += x_val;
@@ -383,6 +431,10 @@ void NVchinh::vacham(map& map_data)
 		on_groud = false;
 		status = -1;
 	}
+}
+void NVchinh::ThemTien()
+{
+	money++;
 }
 void NVchinh::updateImg(SDL_Renderer* des)
 {

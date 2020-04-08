@@ -3,6 +3,7 @@
 #include "Hamcoso.h"
 #include "bando.h"
 #include "NVchinh.h"
+#include "Enemy.h"
 #include "time.h"
 
 Hamcoso g_background;
@@ -51,7 +52,52 @@ void close()
     IMG_Quit();
     SDL_Quit();
 }
+std::vector<Enemy*> MakeEnemyList()
+{
+    std::vector<Enemy*> enemy_list;
 
+    Enemy* enemy_obj_move = new Enemy[20];
+    for (int i = 0; i < 20; i++)
+    {
+        Enemy* p_enemy = (enemy_obj_move + i);
+        if (p_enemy != NULL)
+        {
+            p_enemy->LoadImg("hinh//threat_left.png", g_screen);
+            p_enemy->set_clip();
+            p_enemy->set_type_move(Enemy::move_in_space);
+            p_enemy->set_x_pos(500 + i * 500);
+            p_enemy->set_y_pos(200);
+
+            int pos1 = p_enemy->get_x_pos() - 60;
+            int pos2 = p_enemy->get_x_pos() + 60;
+
+            p_enemy->set_enemy_pos(pos1, pos2);
+
+            p_enemy->set_input_left(1);
+
+            enemy_list.push_back(p_enemy);
+
+        }
+    }
+
+    Enemy* enemy_obj = new Enemy[20];
+    for (int i = 0; i < 20; i++)
+    {
+        Enemy* p_enemy = (enemy_obj + i);
+        if (p_enemy != NULL)
+        {
+            p_enemy->LoadImg("hinh//threat_level.png", g_screen);
+            p_enemy->set_clip();
+            p_enemy->set_x_pos(700+i*1200);
+            p_enemy->set_y_pos(250);
+            p_enemy->set_type_move(Enemy::static_enemy);
+
+            enemy_list.push_back(p_enemy);
+
+        }
+    }
+    return enemy_list;
+}
 int main(int argc, char* argv[])
 {
     impTime fps_times;
@@ -73,6 +119,8 @@ int main(int argc, char* argv[])
 
     player.LoadImg("hinh//player_right.png", g_screen);
     player.SETNVchinh_clip();
+
+    std::vector<Enemy*> enemy_list = MakeEnemyList();
 
     bool is_quit = false;
     while (!is_quit)
@@ -102,6 +150,21 @@ int main(int argc, char* argv[])
         //map
         game_map.SetMap(map_data);
         game_map.DrawMap(g_screen);
+
+        for (int i = 0; i < enemy_list.size(); i++)
+        {
+            Enemy* p_enemy = enemy_list.at(i);
+            if (p_enemy != NULL)
+            {
+                p_enemy->SetMapXY(map_data.stratX, map_data.stratY);
+                p_enemy->ImgMoveType(g_screen);
+                p_enemy->doEnemy(map_data);
+                p_enemy->show(g_screen);
+            }
+        }
+
+
+
 
         SDL_RenderPresent(g_screen);
         //delay

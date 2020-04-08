@@ -3,6 +3,7 @@
 
 #include <Windows.h>
 #include <string>
+#include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
@@ -27,6 +28,7 @@ const int COLOR_KEY_B = 180;//ma mau nen nhan vat
 
 const int RENDER_DRAW_COLOR = 0xff;//mau trang
 
+#define tien 4
 #define chotrong 0
 #define TILE_SIZE 64//co mat xich ban do
 #define MAPMAX_X 400//so mat xich theo X

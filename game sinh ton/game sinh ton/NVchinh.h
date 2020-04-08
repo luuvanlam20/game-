@@ -34,7 +34,9 @@ public:
 	}
 	std::vector<Bullet*> get_bullet_list()const { return p_bullet_list_; }
 	void HandleBullet(SDL_Renderer* des);
+	void ThemTien();
 private:
+	int money;
 	std::vector<Bullet*> p_bullet_list_;
 	float x_val;
 	float y_val;
