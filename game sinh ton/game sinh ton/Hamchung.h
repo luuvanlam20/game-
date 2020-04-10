@@ -54,4 +54,12 @@ typedef struct input
 	int jump;
 };
 
+namespace SDLCommonFuc
+{
+	bool checkColisision(const SDL_Rect& obj1, const SDL_Rect& obj2);
+
+}
+
+
+
 #endif

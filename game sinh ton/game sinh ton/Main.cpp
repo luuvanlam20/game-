@@ -5,6 +5,7 @@
 #include "NVchinh.h"
 #include "Enemy.h"
 #include "time.h"
+#include "explo.h"
 
 Hamcoso g_background;
 // tao windown
@@ -92,6 +93,10 @@ std::vector<Enemy*> MakeEnemyList()
             p_enemy->set_y_pos(250);
             p_enemy->set_type_move(Enemy::static_enemy);
 
+            Bullet* p_bullet = new Bullet();
+            p_enemy->InitBullet(p_bullet, g_screen);
+
+
             enemy_list.push_back(p_enemy);
 
         }
@@ -121,6 +126,14 @@ int main(int argc, char* argv[])
     player.SETNVchinh_clip();
 
     std::vector<Enemy*> enemy_list = MakeEnemyList();
+
+    EXPLO exp_enemy;
+    bool tRet = exp_enemy.LoadImg("hinh//exp3.png", g_screen);
+    if (!tRet) 
+    {
+        return -1;
+    }
+    exp_enemy.set_clip();
 
     bool is_quit = false;
     while (!is_quit)
@@ -159,11 +172,91 @@ int main(int argc, char* argv[])
                 p_enemy->SetMapXY(map_data.stratX, map_data.stratY);
                 p_enemy->ImgMoveType(g_screen);
                 p_enemy->doEnemy(map_data);
+                p_enemy->MakeBullet(g_screen, SCREEN_WIDTH, SCREEN_HEIGHT);
                 p_enemy->show(g_screen);
+
+                SDL_Rect rect_player = player.GetRectFrame();
+                bool bCol1 = false;
+                std::vector<Bullet*> tbullet = p_enemy->get_bullet_list();
+                for(int k = 0; k < tbullet.size(); k++)
+                {
+                    Bullet* enemy_bullet = tbullet.at(k);
+                    if (enemy_bullet)
+                    {
+                        bCol1 = SDLCommonFuc::checkColisision(enemy_bullet->GetRect(), rect_player);
+                        if (bCol1)
+                        {
+                            p_enemy->RemoveBullet(k);
+                            break;
+                        }
+                    }
+                }
+
+                SDL_Rect rect_enemy = p_enemy->GetRectFrame();
+                bool bCol2;
+                bCol2 = SDLCommonFuc::checkColisision(rect_player, rect_enemy);
+
+                if (bCol1 || bCol2)
+                {
+                    if (MessageBox(NULL, L"Game Over!",L"Infor", MB_OK | MB_ICONSTOP) == IDOK)
+                    {
+                        player.Free();
+                        close();
+                        SDL_Quit();
+                        return 0;
+                    }
+                }
+
             }
         }
 
+        int frame_exp_width = exp_enemy.get_frame_width();
+        int frame_exp_height = exp_enemy.get_frame_height();
 
+        std::vector<Bullet*> bullet_arr = player.get_bullet_list();
+        for (int bl = 0; bl < bullet_arr.size(); bl++)
+        {
+            Bullet* p_bullet = bullet_arr.at(bl);
+            if (p_bullet != NULL)
+            {
+                for (int t = 0; t < enemy_list.size(); t++)
+                {
+                    Enemy* obj_enemy = enemy_list.at(t);
+                    if (obj_enemy != NULL)
+                    {
+                        SDL_Rect tRect;
+
+                        tRect.x = obj_enemy->GetRect().x;
+                        tRect.y = obj_enemy->GetRect().y;
+                        tRect.w = obj_enemy->get_width_frame();
+                        tRect.h = obj_enemy->get_height_frame();
+
+                        SDL_Rect bRect;
+                        bRect = p_bullet->GetRect();
+
+                        bool bCol = SDLCommonFuc::checkColisision(bRect,tRect);
+
+                        if (bCol)
+                        {
+                            for (int ex = 0; ex < Num_EX_frame; ex++)
+                            {
+                                int x_pos = p_bullet->GetRect().x-frame_exp_width*0.5;
+                                int y_pos = p_bullet->GetRect().y - frame_exp_height * 0.5;
+                                exp_enemy.set_frame(ex);
+                                exp_enemy.SetRect(x_pos, y_pos);
+                                exp_enemy.show(g_screen);
+
+                            }
+
+                            player.RemoveBullet(bl);
+                            obj_enemy->Free();
+                            enemy_list.erase(enemy_list.begin() + t);
+                        }
+
+                    }
+                }
+            }
+        }
 
 
         SDL_RenderPresent(g_screen);
@@ -178,6 +271,16 @@ int main(int argc, char* argv[])
                 
         }
     }
+    for (int i = 0; i < enemy_list.size(); i++)
+    {
+        Enemy* p_enemy = enemy_list.at(i);
+        if (p_enemy)
+        {
+            p_enemy->Free();
+            p_enemy = NULL;
+        }
+    }
+    enemy_list.clear();
     close();
     return 0;
 }

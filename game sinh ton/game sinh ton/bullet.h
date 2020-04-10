@@ -37,7 +37,7 @@ public:
 	void set_bullet_dir(const unsigned int& bulletDIR) { bullet_dir = bulletDIR; }
 	unsigned int get_bullet_dir()const { return bullet_dir; }
 	void hand_Move(const int& x_bor, const int& y_bor);
-	void loadImgBullet(SDL_Renderer* des);
+	bool loadImgBullet(SDL_Renderer* des);
 private:
 	int x_val_;
 	int y_val_;

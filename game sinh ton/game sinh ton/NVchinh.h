@@ -27,6 +27,9 @@ public:
 	void SetMapXY(const int map_x, const int map_y) { map_x_ = map_x; map_y_ = map_y; }//set toa do X,Y
 	void centerMap(map& map_data);//man hinh di chuyen
 	void updateImg(SDL_Renderer* des);
+
+	SDL_Rect GetRectFrame();
+
 	void set_bullet_list(std::vector<Bullet*> bullet_list)
 	{
 		p_bullet_list_ = bullet_list;
@@ -34,6 +37,7 @@ public:
 	}
 	std::vector<Bullet*> get_bullet_list()const { return p_bullet_list_; }
 	void HandleBullet(SDL_Renderer* des);
+	void RemoveBullet(const int& id);
 	void ThemTien();
 private:
 	int money;

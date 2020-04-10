@@ -37,6 +37,18 @@ bool Enemy::LoadImg(std::string path, SDL_Renderer* screen)
 	}
 	return ret;
 }
+
+
+SDL_Rect Enemy::GetRectFrame()
+{
+	SDL_Rect rect;
+	rect.x = rect_.x;
+	rect.y = rect_.y;
+	rect.w = width_pic;
+	rect.h = height_pic;
+	return rect;
+}
+
 void Enemy::set_clip()
 {
 	if (width_pic > 0 && height_pic > 0)
@@ -148,6 +160,21 @@ void Enemy::InitEnemy()
 	y_val_ = 0;
 	come_back = 0;
 	input_type.left = 1;
+}
+
+void Enemy::RemoveBullet(const int& id)
+{
+	int sizebullet = bullet_list_.size();
+	if (sizebullet > 0 && id < sizebullet)
+	{
+		Bullet* p_bullet = bullet_list_.at(id);
+		bullet_list_.erase(bullet_list_.begin() + id);
+		if (p_bullet)
+		{
+			delete p_bullet;
+			p_bullet == NULL;
+		}
+	}
 }
 
 void Enemy::vacham(map& gMap)
@@ -296,6 +323,50 @@ void Enemy::ImgMoveType(SDL_Renderer* screen)
 			if (input_type.left == 1)
 			{
 				LoadImg("hinh//threat_left.png", screen);
+			}
+		}
+	}
+}
+void Enemy::InitBullet(Bullet* p_bullet, SDL_Renderer* screen)
+{
+	if (p_bullet != NULL)
+	{
+		p_bullet->set_bullet_type(Bullet::lazer_bullet);
+		bool rec=p_bullet->loadImgBullet(screen);
+		if (rec)
+		{
+			p_bullet->set_is_move(true);
+			p_bullet->set_bullet_dir(Bullet::dir_left);
+			p_bullet->SetRect(rect_.x + 10, y_pos_ + 10);
+			p_bullet->set_x_val(20);
+			bullet_list_.push_back(p_bullet);
+		}
+	}
+}
+void Enemy::MakeBullet(SDL_Renderer* screen, const int& x_limit, const int& y_limit)
+{
+	for (int i = 0; i < bullet_list_.size(); i++)
+	{
+		Bullet* p_bullet = bullet_list_.at(i);
+		if (p_bullet != NULL)
+		{
+			if (p_bullet->get_is_move())
+			{
+				int bullet_distance = rect_.x + width_pic - p_bullet->GetRect().x;
+				if(bullet_distance<300 && bullet_distance > 0)
+				{
+					p_bullet->hand_Move(x_limit, y_limit);
+					p_bullet->Render(screen);
+				}
+				else
+				{
+					p_bullet->set_is_move(false);
+				}
+			}
+			else
+			{
+				p_bullet->set_is_move(true);
+				p_bullet->SetRect(rect_.x + 10, y_pos_ + 10);
 			}
 		}
 	}

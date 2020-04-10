@@ -2,9 +2,15 @@
 C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Hamchung.h(46,2): warning C4091: 'typedef ': ignored on left of 'map' when no variable is declared
 C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Hamchung.h(55,2): warning C4091: 'typedef ': ignored on left of 'input' when no variable is declared
 C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\bando.h(28,2): warning C4091: 'typedef ': ignored on left of 'bando' when no variable is declared
-C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(68,36): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(71,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(69,36): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
 C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(72,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(91,35): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
-C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(154,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(73,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(92,35): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(167,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(181,34): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(217,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(222,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(243,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(244,43): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\game sinh ton\Main.cpp(274,23): warning C4018: '<': signed/unsigned mismatch
   game sinh ton.vcxproj -> C:\Users\DELL\OneDrive\Máy tính\data\taptanh\game sinh ton\Debug\game sinh ton.exe

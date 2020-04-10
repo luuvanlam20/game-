@@ -40,6 +40,18 @@ bool NVchinh::LoadImg(std::string path, SDL_Renderer* screen)
 	}
 	return ret;
 }
+
+SDL_Rect NVchinh::GetRectFrame()
+{
+	SDL_Rect rect;
+	rect.x = rect_.x;
+	rect.y = rect_.y;
+	rect.w = width_pic;
+	rect.h = height_pic;
+
+	return rect;
+}
+
 void NVchinh::SETNVchinh_clip()
 {
 	if (width_pic > 0 && height_pic > 0)
@@ -220,6 +232,21 @@ void NVchinh::HandleBullet(SDL_Renderer* des)
 			}
 		}
 
+	}
+}
+
+void NVchinh::RemoveBullet(const int& id)
+{
+	int sizebullet = p_bullet_list_.size();
+	if (sizebullet > 0 && id < sizebullet)
+	{
+		Bullet* p_bullet = p_bullet_list_.at(id);
+		p_bullet_list_.erase(p_bullet_list_.begin()+id);
+		if (p_bullet)
+		{
+			delete p_bullet;
+			p_bullet == NULL;
+		}
 	}
 }
 

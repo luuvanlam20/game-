@@ -1,8 +1,10 @@
 #ifndef ENEMY_H_
 #define ENEMY_H_
 
+#include <iostream>
 #include "Hamchung.h"
 #include "Hamcoso.h"
+#include "bullet.h"
 
 
 #define number_frame 8
@@ -41,6 +43,14 @@ public:
 	void set_input_left(const int& ipleft) { input_type.left = ipleft; }
 	void ImgMoveType(SDL_Renderer* screen);
 
+	SDL_Rect GetRectFrame();
+
+	std::vector<Bullet*> get_bullet_list()const { return bullet_list_; }
+	void set_bullet_list(const std::vector<Bullet*> bl_list) { bullet_list_ = bl_list; }
+	void InitBullet(Bullet* p_bullet, SDL_Renderer* screen);
+	void MakeBullet(SDL_Renderer* screen, const int& x_limit, const int& y_limit);
+	void RemoveBullet(const int& id);
+	
 
 private:
 	int map_x;
@@ -60,6 +70,8 @@ private:
 	int enemy_a;
 	int enemy_b;
 	input input_type;
+
+	std::vector<Bullet*> bullet_list_;
 
 };
 

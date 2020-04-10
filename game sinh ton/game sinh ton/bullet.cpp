@@ -12,21 +12,22 @@ Bullet::~Bullet()
 {
 
 }
-void Bullet::loadImgBullet(SDL_Renderer* des)
+bool Bullet::loadImgBullet(SDL_Renderer* des)
 {
-	
+	bool rec = false;
 	if(bullet_type==bigger_bullet)
 	{
-		LoadImg("hinh//bigger_bullet.png", des);
+		rec=LoadImg("hinh//bigger_bullet.png", des);
 	}
 	else if(bullet_type == lazer_bullet)
 	{
-		LoadImg("hinh//lazer_bullet.png", des);
+		rec=LoadImg("hinh//lazer_bullet.png", des);
 	}
 	else if(bullet_type == bomb_bullet)
 	{
-		LoadImg("hinh//bomb_bullet.png", des);
+		rec=LoadImg("hinh//bomb_bullet.png", des);
 	}
+	return rec;
 }
 void Bullet::hand_Move(const int& x_bor,const int & y_bor)
 {
