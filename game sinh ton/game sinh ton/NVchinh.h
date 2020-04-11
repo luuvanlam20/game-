@@ -39,6 +39,9 @@ public:
 	void HandleBullet(SDL_Renderer* des);
 	void RemoveBullet(const int& id);
 	void ThemTien();
+	void set_time_back(const int& cb_time) { time_back = cb_time; }
+	int GetMoney()const { return money; }
+
 private:
 	int money;
 	std::vector<Bullet*> p_bullet_list_;
